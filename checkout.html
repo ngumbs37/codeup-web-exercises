@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Product Checkout</title>
+
+    </head>
+    <body>
+    <h2>Checkout</h2>
+
+    <form method="POST" action="">
+        <section>
+            <h3>Payment Information</h3>
+            <label for="card_number">Credit Card Number<input type="number" id="card_number" name="card_number" required></label>
+            <label for="expiration_date">Expiration Date<input type="month" id="expiration_date" name="expiration_date" required></label>
+            <br>
+            <label for="card_back_number">CVV<input type="number" id="card_back_number" name="card_back_number" required></label><br>
+        </section>
+        <hr>
+        <section>
+            <h3>Billing Information</h3>
+            <label for="address">Address<input type="text" id="address" name="address" placeholder="Enter your address" required></label>
+
+            <label for="address_two">Address Line 2<input type="text" id="address_two" name="address" placeholder="Apt number"></label>
+
+            <label for="city">City<input type="text" id="city" name="city" placeholder="City" required></label>
+            <label for="state">State<input type="text" id="state" name="state" placeholder="State" required></label>
+            <label for="areacode">Zipcode<input type="number" id="areacode" name="areacode" placeholder="Zipcode"  required></label>
+        </section>
+        <label for="save_card"><input type="checkbox" id="save_card" name="save_card">Keep this credit card on file for future transactions</label>
+        <br>
+        <button>Buy Now!</button>
+
+    </form>
+    </body>
+</html>
