@@ -1,9 +1,55 @@
+@font-face {
+    font-family: 'Cabin';
+    src: url('../fonts/cabin/Cabin.ttf') format('truetype');
+}
+
 img {
-    width: 25%;
+    width: 30%;
     height: auto;
 }
 
 .fancy-header{
     /*color: #ff0000;*/
     color: purple;
+    text-align: center;
+}
+ h1, h2{
+     text-decoration: underline;
+ }
+ ul{
+     list-style: square;
+ }
+ .bdy {
+     font-family: 'Cabin', monospace;
+     background: url("../img/veridian_dynamics.png") #f0f5f5 no-repeat right;
+
+
+
+
+ }
+ .tbl {
+     font-size: 18px;
+     border: black solid 2px;
+     background-color: #4858ff;
+     text-align: center;
+ }
+.tbl th {
+    padding: 2px 5px;
+    background-color: #5d91ff;
+}
+ .tbl tr {
+     background-color: #9cc2ff;
+}
+a:hover {
+    font-size: large;
+}
+
+a:link {
+    color: #c71187;
+}
+a:visited {
+    color: #c78e4e;
+}
+a:active {
+    background-color:blue;
 }
