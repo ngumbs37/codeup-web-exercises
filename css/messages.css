@@ -1,0 +1,49 @@
+body, html {
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    font-family: Arial, Ubuntu, sans-serif;
+}
+
+:root {
+    --size: 0.5em;
+    --bdr: 1px solid lightgrey;
+
+    --bg-info: lightblue;
+    --bg-success: #1aed5b;
+    --bg-warning: yellow;
+    --bg-error: #ff6996;
+
+    --text-info: indigo;
+    --text-success: forestgreen;
+    --text-warning: #c8a500;
+    --text-error: darkred;
+}
+
+.message {
+    padding: var(--size);
+    margin: var(--size);
+    border: var(--bdr);
+    border-radius: var(--size);
+}
+
+.message-info{
+    background-color: var(--bg-info);
+    color: var(--text-info);
+}
+
+.message-success {
+    background-color: var(--bg-success);
+    color: var(--text-success);
+}
+
+.message-warning {
+    background-color: var(--bg-warning);
+    color: var(--text-warning);
+}
+.message-error{
+    background-color: var(--bg-error);
+    color: var(--text-error);
+
+}
