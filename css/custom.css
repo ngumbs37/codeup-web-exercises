@@ -1,0 +1,44 @@
+.jumbotron {
+    background: url("../img/pizza.png");
+}
+h1 {
+    background-color: white;
+    opacity: 0.5;
+}
+@media screen and (max-width:768px){
+
+    .jumbotron {
+        display: none;
+    }
+}
+.card {
+    border: 0;
+}
+
+.margin-arc{
+    margin: 1em 1em 0 1em;
+}
+.margin-top{
+    margin-top: 1em;
+}
+.list-group-item.card-header{
+    background-color: rgba(0,0,0,.03);
+}
+.border {
+    border: 1px lightgray solid;
+}
+.tab-folder > .tab-content:target ~ .tab-content:last-child, .tab-folder > .tab-content {
+    display: none;
+}
+.tab-folder > :last-child, .tab-folder > .tab-content:target {
+    display: block;
+}
+.text-white{
+    color: white;
+}
+.text-dark-blue{
+    color: #3300a7;
+}
+.bg-blue{
+    background-color: #7fcdff;
+}
