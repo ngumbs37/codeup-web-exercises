@@ -15,7 +15,7 @@
  *
  * Can you refactor your code to use functions?
  */
-function number() {
+(function number() {
     var answer = confirm("Would you like to enter a number?");
 
     if (answer) {
@@ -41,7 +41,7 @@ function number() {
             alert("The information entered is not a number.")
         }
     }
-}
+}());
 
 
 /* ########################################################################## */
