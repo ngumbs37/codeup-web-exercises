@@ -34,8 +34,8 @@ console.log(helloMessage);
 var myName = "Nathaniel";
 console.log(sayHello(myName));
 
-// Don't modify the following line, it generates a random number between 1 and 3
-// and stores it in a variable named random
+// Don't modify the following line, it generates a userInput number between 1 and 3
+// and stores it in a variable named userInput
 var random = Math.floor((Math.random() * 3) + 1);
 
 /**
@@ -49,10 +49,10 @@ var random = Math.floor((Math.random() * 3) + 1);
  * > isTwo(2) // returns true
  * > isTwo(3) // returns false
  *
- * Call the function 'isTwo' passing the variable 'random' as a argument.
+ * Call the function 'isTwo' passing the variable 'userInput' as a argument.
  *
  * console.log *outside of the function* to check your work (you should see a
- * different result everytime you refresh the page if you are using the random
+ * different result everytime you refresh the page if you are using the userInput
  * number)
  */
 
@@ -107,7 +107,7 @@ var discountPercent = prompt("Enter discount percentage");
 
 function applyDiscount(oP, dP){
     var discount = oP * (dP / 100);
-    var newTotal = oP - disco   unt ;
+    var newTotal = oP - discount ;
     return newTotal;
 }
 

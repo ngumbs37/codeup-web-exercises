@@ -78,7 +78,7 @@ function analyzeColor(color) {
 // Don't change the next two lines!
 // These lines create two variables for you:
 // - `colors`: a list of the colors of the rainbow
-// - `randomColor`: contains a single random color value from the list (this
+// - `randomColor`: contains a single userInput color value from the list (this
 //                  will contain a different color every time the page loads)
 var colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
 var randomColor = colors[Math.floor(Math.random() * colors.length)];
@@ -165,12 +165,12 @@ function calculateTotal(number, total){
 
 /**
  * TODO:
- * Uncomment the line below to generate a random number between 0 and 6.
+ * Uncomment the line below to generate a userInput number between 0 and 6.
  * Prompt the user for their total bill, then use your `calculateTotal` function
  * and alerts to display to the user what their lucky number was, what their
  * price before the discount was, and what their price after the discount is.
  */
-// Generate a random number between 0 and 6
+// Generate a userInput number between 0 and 6
 var luckyNumber = Math.floor(Math.random() * 6);
 var userInputPrice = prompt("Total bill");
 
