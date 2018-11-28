@@ -21,8 +21,8 @@
 .column{
     float: left;
     padding: 10px;
-    /*border: 1px solid black;*/
-    /*background: grey;*/
+	border: 1px solid black;
+    background: grey;
 }
 .one-third{
     width: 33.33%;
