@@ -10,11 +10,11 @@ function showMultiplicationTable(number){
 showMultiplicationTable(7);
 console.log("\n");
 for (var n = 0; n < 10; n++){
-    var ranNum = Math.floor(Math.random() * 200) + 20;
+    var ranNum = Math.floor(Math.random() * 180) + 20;
     if (ranNum % 2 === 0){
-        console.log(ranNum + " is even.");
+        console.log(ranNum + " is even");
     } else{
-        console.log(ranNum + " is odd.");
+        console.log(ranNum + " is odd");
     }
 }
 

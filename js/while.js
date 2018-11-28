@@ -13,7 +13,7 @@ while (i < 16){
 var allCones = Math.floor(Math.random() * 50) + 50;
 
 console.log("\n\n");
-while (allCones > 0){
+do {
     // This expression will generate a userInput number between 1 and 5
     var conesToSell = Math.floor(Math.random() * 5) + 1;
 
@@ -26,5 +26,5 @@ while (allCones > 0){
     if (0 === allCones){
         console.log("We're all out of cones!");
     }
-}
+} while (allCones > 0);
 
