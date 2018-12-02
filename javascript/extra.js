@@ -9,7 +9,7 @@ function isOdd(number){
         console.log("number is not odd");
     }
 }
-// Make a function named isEven(number)
+/** Make a function named isEven(number) */
 function isEven(number) {
     if (number % 2 === 0 ){
         console.log("number is even");
