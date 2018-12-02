@@ -90,37 +90,46 @@
      */
     var books = [
             {
-                title:"",
+                title:"The Ghost",
                 author:{
-                    firstName: "",
-                    lastName: ""
+                    firstName: "Danielle",
+                    lastName: "Steel"
                 }
             }, {
-                title:"",
+                title:"The Lightning Thief",
                 author:{
-                    firstName: "",
-                    lastName: ""
+                    firstName: "Nick",
+                    lastName: "Riordan"
                 }
             }, {
-                title:"",
+                title:"Twilight",
                 author:{
-                    firstName: "",
-                    lastName: ""
+                    firstName: "Stephenie",
+                    lastName: "Meyer"
                 }
             }, {
-                title:"",
+                title:"Harry Potter and the Philosopher's Stone",
                 author:{
-                    firstName: "",
-                    lastName: ""
+                    firstName: "Joanne",
+                    lastName: "Rowling"
                 }
             }, {
-                title:"",
+                title:"The Lost Symbol",
                 author:{
-                    firstName: "",
-                    lastName: ""
+                    firstName: "Dan",
+                    lastName: "Brown"
                 }
+            }, {
+                title:"The Story Sisters",
+                author:{
+                    firstName: "Alice",
+                    lastName: "Hoffman"
             }
+        }
         ];
+    console.log(books[0].title);
+    console.log(books[0].author.firstName);
+    console.log(books[0].author.lastName);
     /**
      * TODO:
      * Loop through the books array and output the following information about
@@ -146,6 +155,12 @@
      *      ...
      */
 
+    books.forEach(function(element, index){
+        console.log("Book # " + (index+1));
+        console.log("Title: " + element.title);
+        console.log("Author: " + element.author.firstName + " " + element.author.lastName);
+        console.log("---");
+    });
     /**
      * Bonus:
      * - Create a function named `createBook` that accepts a title and author
@@ -157,4 +172,42 @@
      *   `showBookInfo` function.
      */
 
+    function createBook(title, author){
+        var book = {};
+        book.title = title;
+        author = author.split(" ");
+        book.author = {};
+        book.author.firstName = author[0];
+        book.author.lastName = author[1];
+        return book;
+    }
+    function showBookInfo(book){
+        console.log("Title: " + book.title);
+        console.log("Author: " + book.author.firstName + " " + book.author.lastName);
+        console.log("---");
+    }
+    books = [];
+    // books.push(createBook("How to Click Circles","Nathaniel Gumbs"));
+    // console.log(showBookInfo(books[0]));
+
+    function isNumeric(input){
+        return !isNaN(input);
+    }
+    // function askUser(){
+    //      var numberOfBooks = prompt("How many books do you have to enter?");
+    //     return numberOfBooks;
+    // }
+    while(true) {
+        var userInput = prompt("How many books do you have to enter?");
+        if (isNumeric(userInput)) {
+            break;
+        }
+    }
+
+    for (var i=0; i< userInput; i++ ){
+        var bookTitle = prompt("Enter Book Title");
+        var authorName = prompt("Enter author first and last name.");
+        books.push(createBook(bookTitle, authorName));
+        showBookInfo(books[i]);
+    }
 })();
