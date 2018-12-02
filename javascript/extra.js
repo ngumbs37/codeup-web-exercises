@@ -297,7 +297,10 @@ function isLowerCase(letter) {
 // Write a function named cube(n) that returns n * n * n
 // Write a function named squareRoot(n) that returns the square root of the input
 // Write a function named cubeRoot(n) that returns the cube root of the input
-// Write a function named invertSign(number) that returns a negative version of a positive number, a positve version of negative, and false for all else.
+
+// Write a function named invertSign(number) that returns a negative version of a positive number,
+// a posiitve version of negative, and false for all else.
+
 // Write a function named degreesToRadians(number)
 // Write a function named radiansToDegrees(number)
 // Make a function named isBlank(input) that determines if a given input is spaces, newline characters, or tabs.
@@ -310,7 +313,8 @@ function isLowerCase(letter) {
 // Make a function named or(predicate1, predicate2) that returns the logical operation of OR
 // Write a function called reverseString(string) that reverses a string
 // Make a function named absoluteValue(number) that returns the absolute value of a number.
-// Make a function named rollDice(sides) that takes in an argument containing the number of sides the die should have. Generate a random number between 1 up to and including the number of sides.
+// Make a function named rollDice(sides) that takes in an argument containing the number of sides the die should have.
+// Generate a random number between 1 up to and including the number of sides.
 
 // Simple Function Drills
 // Make a function called returnTwo() that returns the number 2 when called
@@ -341,7 +345,8 @@ function isLowerCase(letter) {
 // Write a remainder(number, divisor) function that returns the remainder left over when dividing number by the divisor
 // Write the function square(a) that takes in a number and returns the number multiplied by itself.
 // Write a function called sumOfSquares(a, b) that uses only your add() function and your square function and not + or * operators
-// Write a function called doMath(operator, a, b) that takes 3 parameters. The first parameter is the name of the math function you want to apply. a and b are the two numbers to run that function on.
+// Write a function called doMath(operator, a, b) that takes 3 parameters. The first parameter is the name of the math function you want to apply.
+// a and b are the two numbers to run that function on.
 //
 // Even More Function Bonuses
 // Create a function that will return how many whitespace characters are at the beginning and end of a string.
@@ -355,6 +360,89 @@ function isLowerCase(letter) {
 // Create a function returnTrueMessage() that returns the string “Hey, it’s true!”
 // Create a function returnFalseMessage() that returns the string “Hey, it’s false!”
 // Create a function returnMessage() that takes in a function and returns the call to the function
-// Experiement passing in different functions.
+// Experiment passing in different functions.
 // Create a function, willLoginUser() that takes in a username string, password string, user age, a boolean indicating if they are an admin.
-// The function will return true if the username is not the same as the password and the user is at least 18 years old. If the user is an admin, they do not have to be a certain age but the password must still not match the username.
+// The function will return true if the username is not the same as the password and the user is at least 18 years old.
+// If the user is an admin, they do not have to be a certain age but the password must still not match the username.
+
+
+"use strict";
+//More practice w/ loops and arrays
+
+//Exercise 1:
+//Write a function named oneHundred() that returns an array with integers starting at 1 and ending at 100;
+function oneHundred(){
+	var array = [];
+	// for (var i = 0; i < 100; i++){
+	// 	array.push(i+1);               // uses push() to append to the empty array
+	// }
+
+	for (var i = 0; i < 100; i++){
+		array[i] = i+1;              //  assigment to indices to builds array
+	}
+	return array;
+}
+
+//Exercise 2:
+//Write a function named reverse() that takes in an array and returns a reversed copy of the provided array.
+// This function should not alter the original array sent into it.
+function reverse(array) {
+	var reverseArray = [];
+	for (var i = array.length -1 ; i >= 0; i--) {
+		reverseArray.push(array[i]);
+	}
+	return reverseArray;
+}
+//Exercise 3:
+//Write a function named sumAll() that takes in an array of numbers and returns the sum of all the numbers.
+// Use sumAll() on oneHundred() to get the sum of all numbers 1 + 2 + 3... + 100
+function sumAll(addEmUp) {
+	var sum = 0;
+	for (var i = 0 ; i < addEmUp.length ; i++) {
+		sum = sum + addEmUp[i]
+	}
+	return sum;
+}
+//Exercise 4:
+//Write a function named multiplyAll() that takes in an array of numbers and returns the product of all numbers.
+// Use multiplyAll on oneOnehundred() to get the product of 1*2*3*...100
+
+function multiplyAll(input) {
+	var product = 1;
+	for (var i = 0 ; i < input.length ; i++) {
+		product =  product * input[i]
+	}
+	return product;
+}
+
+// searches array for the presence of item and returns an array of all of the occurrences of item
+function getAllIndices(array, item) {
+	var indices =[];
+	// array.forEach(function(element, index){
+	// 	if (array[index] === item){
+	// 		indices.push(index)
+	// 	}
+	// });
+
+	for(var i = 0; i < array.length; i++) {
+		if (array[i] === item) {
+			indices.push(i)
+		}
+	}
+	return indices;
+}
+// searches through arrays and secondary arrays in the primary
+function searchNestedArray(array) {
+   for(var i = 0; i < array.length; i++) {
+   		if (!Array.isArray(array[i])) {
+        console.log("The name "+ array[i] +" is located at the index of "+ i +" in the array");
+   		}
+        for (var j = 0; j < array[i].length; j++) {
+            if (Array.isArray(array[i])) {
+                console.log("The name "+ array[i][j] +" is located at the index of "+ j +" of the array in the array");
+            }
+        }
+    }
+}
+
+
