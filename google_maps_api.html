@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #mapid{
+            height: 380px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="mapid"></div>
+
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDkaTLllzhdj4K48NcbTyLUQoen8r29lrc"></script>
+
+<script>
+
+   "use strict";
+   var mapOptions = {
+       'zoom': 15,
+       'center': {
+           'lat':  29.48926,
+           'lng': -98.583042
+       }
+   };
+   var map = new google.maps.Map(document.getElementById("mapid"), mapOptions);
+   var marker = new google.maps.Marker({
+       'position': mapOptions['center'],
+       'map': map
+   });
+   var infowindow = new google.maps.InfoWindow({
+       'content': "<strong>Chopsticks Chinese Restaurant</strong>"
+   });
+   var geocoder = new google.maps.Geocoder();
+
+   marker.setMap(map);
+   infowindow.open(map, marker);
+
+</script>
+</body>
+</html>
