@@ -6,11 +6,30 @@
     <title>JQuery</title>
 </head>
 <body>
+<h1 id="big-header" class="header">JQuery</h1>
 
+<p id="text" class="codeup"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid amet autem, consequuntur eos facere fugiat impedit in iste iure minima nostrum optio, possimus quisquam quo ratione, repudiandae rerum tenetur vitae.
+</p>
+
+<ul id="list-container" class="list-container">
+    <li id="item-1" class="list">item 1</li>
+    <li id="item-2" class="codeup">item 2</li>
+    <li id="item-3" class="list">item 3</li>
+    <li id="item-4" class="codeup">item 4</li>
+    <li id="item-5" class="list">item 5</li>
+</ul>
 <script>
     $(document).ready(function() {
-        alert("All resources have been loaded")
+        alert($('#item-1').html());
     });
+
+    $('li').css("font-size", "20px");
+
+    alert($('h1').html());
+    $('h1, p, li').css("backgroundColor", "#553355");
+
+
+
 </script>
 
 </body>
