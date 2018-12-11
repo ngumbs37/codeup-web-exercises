@@ -20,13 +20,20 @@
 </ul>
 <script>
     $(document).ready(function() {
-        alert($('#item-1').html());
+        $('h1').click(function(){
+            $(this).css('background-color', 'pink');
+        });
+
+        $('p').dblclick(function(){
+            $(this).css('font-size', '18px');
+        });
+        $('li').hover(function(){
+            $(this).css('color', 'red');
+        }, function(){
+            $(this).css('color', '');
+        });
     });
 
-    $('li').css("font-size", "20px");
-
-    alert($('h1').html());
-    $('h1, p, li').css("backgroundColor", "#553355");
 
 
 
