@@ -38,6 +38,31 @@
 
 </head>
 <body>
+
+<!--For this exercise, we will continue working on the jquery_faq.html file.-->
+<!--At the top of the page, add a div with two elements,
+an h1 that reads "Would you like to sign up for our newsletter?"
+and a span that has an 'x' in it. When the 'x' is clicked, hide the entire div element.-->
+
+<!--The uls next to each h3 that contain facts about each park should start out hidden,
+and when the corresponding h3 is clicked, the display of the ul should be toggled with a sliding effect.-->
+<!--After the user has been on the page for 8 seconds,
+an h2 should fade in that asks the user to register for the site.-->
+<!--As always, make sure you are adding, commiting and pushing to Github.-->
+
+<!--Bonus-->
+
+<!--Use a bootstrap alert for the dismissable message that shows on page load.-->
+<!--Use a bootstrap modal for the message that fades in after 8 seconds. You may find that you can use bootstrap's modal methods to achieve the fading effect.-->
+
+<div>
+    <h1 style="display: inline-block">Would you like to sign up for our newsletter?</h1>
+    <span><sup>X</sup></span>
+</div>
+
+<div >
+    <h2 class="invisible">Would you like to register for the site?</h2>
+</div>
  <h1>JQuery FAQ</h1>
  <h3>National Parks</h3>
  <dl>
@@ -67,7 +92,7 @@
 
 
  <h3 id="littleMulberry">Little Mulberry Park</h3>
- <ul>
+ <ul class="invisible">
      <li>Walking Trails</li>
      <li>Golf Course</li>
      <li>Large Lake</li>
@@ -76,7 +101,7 @@
  </ul>
 
  <h3 id="kennesaw">Kennesaw Mountain National Battlefield Park</h3>
- <ul>
+ <ul class="invisible">
      <li>Cite of a Civil War Battle</li>
      <li>Rich History</li>
      <li>Hiking Trails</li>
@@ -85,7 +110,7 @@
  </ul>
 
  <h3 id="big-bend">Big Bend National Park</h3>
- <ul>
+ <ul class="invisible">
      <li>Fossils</li>
      <li>Biking Trail</li>
      <li>River Trail</li>
@@ -95,13 +120,13 @@
 
  <script>
      "use strict";
-
      $(document).ready(function() {
          $('#toggle-invisible').click(function() {
              $('dd').toggleClass('invisible');
          });
          $('dt').click(function(){
-             $(this).toggleClass('highlight');
+             // $(this).toggleClass('highlight');
+             $(this).next().toggleClass('highlight');
          });
          $('button').click(function(){
              $('ul').each(function() {
@@ -109,12 +134,20 @@
              });
          });
          $("h3").click(function(){
-             $(this).next().toggleClass('text-bold');
+             $(this).next().css('font-weight','bold');
+             $(this).next().slideToggle();
          });
          $("li").click(function(){
              $(this).parent().children().first().toggleClass('text-color');
          });
 
+         $('span').click(function(){
+            $(this).parent().hide();
+         });
+
+         setTimeout(function(){
+                 $('h2.invisible').fadeToggle(2000);
+             }, 8000);
 
 
 
