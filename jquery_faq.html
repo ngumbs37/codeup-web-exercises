@@ -10,6 +10,29 @@
         .highlight {
             background-color: #FF0;
         }
+        .div-border{
+            border: coral 5px solid;
+        }
+        .text-bold{
+            font-weight: bold;
+        }
+        .text-color{
+            color: blue;
+        }
+        .img-size{
+            height: 400px;
+            width: 250px;
+            margin: 0 1em;
+        }
+        .img1{
+            background: url("");
+        }
+        .img2{
+            background: url("");
+        }
+        .img3{
+            background: url("");
+        }
     </style>
     <script src="js/jquery-2.2.4.min.js"></script>
 
@@ -42,6 +65,34 @@
 
  <a href="#" id="toggle-invisible">Click to toggle hidden text.</a>
 
+
+ <h3 id="littleMulberry">Little Mulberry Park</h3>
+ <ul>
+     <li>Walking Trails</li>
+     <li>Golf Course</li>
+     <li>Large Lake</li>
+     <li>Horse Trail</li>
+
+ </ul>
+
+ <h3 id="kennesaw">Kennesaw Mountain National Battlefield Park</h3>
+ <ul>
+     <li>Cite of a Civil War Battle</li>
+     <li>Rich History</li>
+     <li>Hiking Trails</li>
+     <li>Mountainous</li>
+
+ </ul>
+
+ <h3 id="big-bend">Big Bend National Park</h3>
+ <ul>
+     <li>Fossils</li>
+     <li>Biking Trail</li>
+     <li>River Trail</li>
+     <li>Ranger Programs</li>
+ </ul>
+<button type="button" >Highlight Text</button>
+
  <script>
      "use strict";
 
@@ -49,13 +100,39 @@
          $('#toggle-invisible').click(function() {
              $('dd').toggleClass('invisible');
          });
-
          $('dt').click(function(){
              $(this).toggleClass('highlight');
-         })
+         });
+         $('button').click(function(){
+             $('ul').each(function() {
+                 $(this).children().last().toggleClass('highlight');
+             });
+         });
+         $("h3").click(function(){
+             $(this).next().toggleClass('text-bold');
+         });
+         $("li").click(function(){
+             $(this).parent().children().first().toggleClass('text-color');
+         });
+
+
+
+
+
+/*
+    Create 3 divs that each look like a picture Frame;
+    each one should have a unique background image
+    and a button underneath that swaps the image from the frame.
+    Use Traversing functions of jQuery to accomplish this.
+
+    The rules are the following:
+
+    The left frame swaps to the right and takes the image from the frame in the center.
+    The center frame swaps randomly to either the left or right.
+    The right frame swaps to the left and takes the image from the frame in the center.
+*/
+
      });
-
-
      </script>
 
 </body>
