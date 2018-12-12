@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Konami</title>
+    <script src="js/jquery-2.2.4.min.js"></script>
+
+</head>
+<body>
+<h1>Konami Code</h1>
+<div id="konami"></div>
+<script>
+    "use strict";
+    var code = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65, 13];
+    var userInput =[];
+    var index = 0;
+    $(document).keydown(function(event){
+        userInput.push(event.keyCode);
+        codeCheck();
+    });
+    function codeCheck(){
+        if (userInput[index] === code[index] ){
+            if (code[code.length-1] === userInput[code.length-1]){
+                displayStuff();
+                return;
+            }
+            index++;
+        } else {
+            userInput = [];
+            index = 0;
+        }
+    }
+    
+    function displayStuff() {
+    alert("minigame enabled");
+    $('#konami').html('<iframe src="https://itch.io/embed/92821" height="167" width="552" frameborder="0"></iframe>');
+    }
+
+
+
+</script>
+
+</body>
+</html>
