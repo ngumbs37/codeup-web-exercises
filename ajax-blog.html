@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-2.2.4.min.js"></script>
+    <link rel="stylesheet" crossorigin="anonymous"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+
+        span{
+            margin-left:1em;
+        }
+        .card{
+            margin: 1em;
+        }
+        .date{
+            font-size: .7em;
+        }
+        .text{
+            margin: auto;
+            text-indent: 2em;
+            max-width: 95%;
+        }
+
+    </style>
+</head>
+<body>
+
+<div id='posts'></div>
+
+<script>
+    $.ajax('data/blog.json').done(function (blogs) {
+        var buildHtml ="";
+        blogs.forEach(function (blogData) {
+            buildHtml += "<div class='card'><div class='card-header'>"
+                + blogData.title
+                + "<span class='text-muted date'>" + blogData.date + "</span>"
+                + pillMaker(blogData.categories) + "</div>"
+                + "<div class='text'>" + blogData.content+ "</div></div>";
+
+            $('#posts').html(buildHtml);
+        });
+    });
+    function pillMaker(array){
+        var htmlText = "";
+        array.forEach(function(element){
+            htmlText+= '<span class="badge badge-pill badge-info">'+ element +'</span>'
+        });
+        return htmlText;
+    }
+
+</script>
+
+</body>
+</html>
+
