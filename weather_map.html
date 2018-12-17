@@ -8,12 +8,7 @@
           href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <style>
         #map {
-            height: 500px;
-        }
-        body{
-            background: cornflowerblue;
-            padding:1em;
-
+            height: 400px;
         }
         .card {
             padding:15px;
@@ -22,6 +17,11 @@
         }
         h2{
             display: block;
+        }
+        body{
+             background: cornflowerblue;
+             padding:1em;
+
         }
 
     </style>
@@ -53,9 +53,8 @@
     <script>
         var lat = 29.4246;
         var lon = -98.4952;
-        var marker;
 
-        function weatherCall() {
+        function weatherCall(latitude,longitude) {
             var weatherDays = [];
             var weatherHtml= '';
             $.ajax({
@@ -63,8 +62,8 @@
                 type: "GET",
                 data: {
                     APPID: "8f10d7c0f2d629d9b8393a051cbf7151",
-                    lat: lat,
-                    lon: lon,
+                    lat: latitude,
+                    lon: longitude,
                     units: "imperial"
                 }
             }).done(function(data) {
@@ -77,27 +76,25 @@
             });
         }
 
-        function initMap() {
+        function makeMap() {
             var map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 13,
+                zoom: 10,
                 center: {lat: lat, lng: lon}
             });
-            marker = new google.maps.Marker({
+            var marker = new google.maps.Marker({
                 map: map,
                 draggable: true,
-                animation: google.maps.Animation.DROP,
                 position: {lat: lat, lng: lon}
+            });
+            marker.addListener('dragend', function () {
+                lat = marker.position.lat();
+                lon = marker.position.lng();
+                weatherCall(lat,lon);
             });
         }
 
         weatherCall();
-        initMap();
-
-        marker.addListener('dragend', function () {
-            lat = marker.position.lat();
-            lon = marker.position.lng();
-            weatherCall();
-        });
+        makeMap();
 
         function build(weatherCards){
             var cards = '';
@@ -105,7 +102,7 @@
                 var iconURL = "'http://openweathermap.org/img/w/"+ card.weather[0].icon+".png'";
                 cards += "<div class='card col-4 text-center'><div>"
                     + "<h3>" + Math.floor(card.main.temp_min) + "˚/ " +  Math.floor(card.main.temp_max) + "˚</h3>"
-                    + "<img src="+ iconURL + ">"+ "<br>"
+                    + "<img src="+ iconURL + "><br>"
                     + "<strong>"+card.weather[0].main+": </strong>" + card.weather[0].description + ""+ "<br>"
                     + "<strong>Humidity: "+"</strong>"+ card.main.humidity + "<br>"
                     + "<strong>Wind: "+"</strong>"+ card.wind.speed + "<br>"
