@@ -7,6 +7,9 @@
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
           href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <style>
+        #map {
+            height: 500px;
+        }
         body{
             background: cornflowerblue;
             padding:1em;
@@ -24,77 +27,109 @@
     </style>
 </head>
 <body>
-<div id="weather-box" class="container">
-    <h1>Weather App</h1>
-    <h3 id="location"></h3>
-    <form id="form">
-    <label for="latitude"> Latitude:
-        <input id="latitude" type="text">
-    </label>
-    <label for="longitude">Longitude:
-        <input id="longitude" type="text">
-    </label>
+    <div id="weather-box" class="container">
+        <h1>Weather App</h1>
+        <h3 id="location"></h3>
+        <!--<form id="form">-->
+        <!--<label for="latitude"> Latitude:-->
+            <!--<input id="latitude" type="text">-->
+        <!--</label>-->
+        <!--<label for="longitude">Longitude:-->
+            <!--<input id="longitude" type="text">-->
+        <!--</label>-->
 
-    <button id="btn"> Submit </button>
-    </form>
-<div id="weather-cards" class="row">
+        <!--<button id="btn"> Submit </button>-->
+        <!--</form>-->
 
-<div class="container" id="map"></div>
+    <div id="weather-cards" class="row"></div>
+
+    </div>
+    <div class="container card" id="map"></div>
+    <script src="js/jquery-2.2.4.min.js"></script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDkaTLllzhdj4K48NcbTyLUQoen8r29lrc"></script>
 
 
-</div>
-</div>
+    <script>
+        var lat = 29.4246;
+        var lon = -98.4952;
+        var marker;
 
-<script src="js/jquery-2.2.4.min.js"></script>
-<script>
-    var weatherHtml= '';
-    var weatherDays = [];
-
-    $.ajax({
-        url: "https://api.openweathermap.org/data/2.5/forecast",
-        type: "GET",
-        data: {
-            APPID: "8f10d7c0f2d629d9b8393a051cbf7151",
-            q: "San Antonio, US",
-            units: "imperial"
+        function weatherCall() {
+            var weatherDays = [];
+            var weatherHtml= '';
+            $.ajax({
+                url: "https://api.openweathermap.org/data/2.5/forecast",
+                type: "GET",
+                data: {
+                    APPID: "8f10d7c0f2d629d9b8393a051cbf7151",
+                    lat: lat,
+                    lon: lon,
+                    units: "imperial"
+                }
+            }).done(function(data) {
+                for (var i = 0; i < 24; i+=8) {
+                    weatherDays.push(data.list[i]);
+                }
+                weatherHtml += build(weatherDays);
+                $('#location').html(data.city.name+ ", " + data.city.country);
+                $('#weather-cards').html(weatherHtml);
+            });
         }
-    }).done(function(data) {
-        for (var i = 0; i < 24; i+=8) {
-            weatherDays.push(data.list[i]);
+
+        function initMap() {
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 13,
+                center: {lat: lat, lng: lon}
+            });
+            marker = new google.maps.Marker({
+                map: map,
+                draggable: true,
+                animation: google.maps.Animation.DROP,
+                position: {lat: lat, lng: lon}
+            });
         }
 
-        console.log(weatherDays);
-        weatherHtml += build(weatherDays);
+        weatherCall();
+        initMap();
 
-        $('#location').html(data.city.name+ ", " + data.city.country);
-        $('#weather-cards').html(weatherHtml);
-
-
-    });
-    $('#btn').click(function(event) {
-        event.preventDefault();
-
-        document.querySelector('#form').reset();
-    });
-    function build(weatherCards){
-        var cards = '';
-        weatherCards.forEach(function(card) {
-            var iconURL = "'http://openweathermap.org/img/w/"+ card.weather[0].icon+".png'";
-            cards += "<div class='card col-4 text-center'><div>"
-                + "<h3>" + Math.floor(card.main.temp_min) + "˚/ " +  Math.floor(card.main.temp_max) + "˚</h3>"
-                + "<img src="+ iconURL + ">"+ "<br>"
-                + "<strong>"+card.weather[0].main+": </strong>" + card.weather[0].description + ""+ "<br>"
-                + "<strong>Humidity: "+"</strong>"+ card.main.humidity + "<br>"
-                + "<strong>Wind: "+"</strong>"+ card.wind.speed + "<br>"
-                + "<strong>Pressure: "+"</strong>"+card.main.pressure
-                + "</div></div>";
+        marker.addListener('dragend', function () {
+            lat = marker.position.lat();
+            lon = marker.position.lng();
+            weatherCall();
         });
-        return cards;
-    }
+
+        function build(weatherCards){
+            var cards = '';
+            weatherCards.forEach(function(card) {
+                var iconURL = "'http://openweathermap.org/img/w/"+ card.weather[0].icon+".png'";
+                cards += "<div class='card col-4 text-center'><div>"
+                    + "<h3>" + Math.floor(card.main.temp_min) + "˚/ " +  Math.floor(card.main.temp_max) + "˚</h3>"
+                    + "<img src="+ iconURL + ">"+ "<br>"
+                    + "<strong>"+card.weather[0].main+": </strong>" + card.weather[0].description + ""+ "<br>"
+                    + "<strong>Humidity: "+"</strong>"+ card.main.humidity + "<br>"
+                    + "<strong>Wind: "+"</strong>"+ card.wind.speed + "<br>"
+                    + "<strong>Pressure: "+"</strong>"+card.main.pressure
+                    + "</div></div>";
+            });
+            return cards;
+        }
+        // $('#btn').click(function (event) {
+        //     newLocation(event);
+        // });
+        //
+        //
+        // function newLocation(event) {
+        //     event.preventDefault();
+        //     lat = parseFloat(document.querySelector('#latitude').value);
+        //     lon = parseFloat(document.querySelector('#longitude').value);
+        //     document.querySelector('#form').reset();
+        //     weatherCall();
+        // }
 
 
 
-</script>
+    </script>
 
 </body>
 </html>
